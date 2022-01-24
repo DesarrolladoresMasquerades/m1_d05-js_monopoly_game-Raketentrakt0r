@@ -36,10 +36,10 @@ var player3 = {
  
 // --- Turn of Player 1 ---
 // The dice is a random integer between 1 and 6
-dice = 
+dice = Math.floor(Math.random() * 6) + 1
 
 // The position is always between 0 and 15 (the numbers of squares - 1)
-player1.position = 
+player1.position = (player1.position + dice) % squares.length;
 
 // The cash is updated based on the values of squares and player1.position
 player1.cash += squares[player1.position];
@@ -50,11 +50,21 @@ if (player1.cash < 0) {
 }
 
 // --- Turn of Player 2 ---
-
+dice = Math.floor(Math.random() * 6) + 1
+player2.position = (player2.position + dice) % squares.length;
+player2.cash += squares[player2.position];
+if (player1.cash < 0) {
+  console.log(`Game over for ${player2.name}.`);
+}
 
 // --- Turn of Player 3 ---
 
-
+dice = Math.floor(Math.random() * 6) + 1
+player3.position = (player3.position + dice) % squares.length;
+player3.cash += squares[player3.position];
+if (player1.cash < 0) {
+  console.log(`Game over for ${player3.name}.`);
+}
 // --- Display info  ---
 console.log(player1);
 console.log(player2);
@@ -70,26 +80,53 @@ var player1 = {
   color: 'red',
   position: 0,
   cash: 1000,
-  move() {},
-  displayInfo (){},
+  move() {
+    let dice = Math.floor(Math.random() * 6) + 1
+    this.position = (this.position + dice) % squares.length;
+    this.cash += squares[this.position];
+    if (this.cash < 0) {
+      console.log(`Game over for ${this.name}.`);
+}
+  },
+  displayInfo (){
+    console.log(`${this.name} is at ${this.position}  and has ${this.cash} $`)
+  },
 };
 
-let player2 = {
+var player2 = {
   name: 'Carlos',
   color: 'blue',
   position: 0,
   cash: 1000,
-  move() {},
-  displayInfo () {},
+  move() {
+    let dice = Math.floor(Math.random() * 6) + 1
+    this.position = (this.position + dice) % squares.length;
+    this.cash += squares[this.position];
+    if (this.cash < 0) {
+      console.log(`Game over for ${this.name}.`);
+    } 
+  },
+  displayInfo () {
+    console.log(`${this.name} is at ${this.position}  and has ${this.cash} $`)
+  },
 };
 
-let player3 = {
+var player3 = {
   name: 'Marco',
   color: 'black',
   position: 0,
   cash: 1000,
-  move() {},
-  displayInfo () {},
+  move() {
+    let dice = Math.floor(Math.random() * 6) + 1
+    this.position = (this.position + dice) % squares.length;
+    this.cash += squares[this.position];
+    if (this.cash < 0) {
+      console.log(`Game over for ${this.name}.`);
+    } 
+  },
+  displayInfo () {
+    console.log(`${this.name} is at ${this.position}  and has ${this.cash} $`)
+  },
 };
 
 // --- Turn 1  ---
